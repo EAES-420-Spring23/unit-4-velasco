@@ -7,7 +7,7 @@ output: html_document
 
 ### Load packages and data
 
-```{r load-packages message = FALSE}
+```{r load-packages, message = FALSE}
 library(tidyverse)
 library(openintro)
 ```
@@ -16,7 +16,27 @@ library(openintro)
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
+```{r echo = F}
+1
+1L
+"C"
+```
+1 is type double 
+1L is type integer
+C is type character 
+
+1 is type `r typeof(1)`
+
+```{r echo = F}
+c(1, 1L, "C")
+```
+
+The second code chunk creates a vector thats more organzied and the second one makes them the characters 
+
+```{r echo = F}
+typeof(c(1, 1L, "C"))
+```
+the third code chunk makes it type`r typeof(c(1,1L,"c"))`
 
 ### Exercise 2
 
