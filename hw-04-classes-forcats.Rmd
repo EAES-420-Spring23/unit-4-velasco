@@ -1,0 +1,200 @@
+---
+title: "HW 04 - Data Types and Classes w. forcats & lubridate"
+output: 
+  tufte::tufte_html:
+    css: ../hw.css
+    tufte_variant: "envisioned"
+    highlight: pygments
+link-citations: yes
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(eval = TRUE)
+```
+
+# Learning goals
+
+-   Learn how to identify and distinguish different R object classes
+-   Practice creating and manipulating different R object classes
+-   Practice manipulating factor data with forcats and dates with lubridate
+
+# Getting started
+
+If you're looking at this RMarkdown document in RStudio, then you've already cloned your Unit 2 repo from Github.
+Good job!
+
+As a brief reminder of the steps:
+
+-   Use the Github link to generate your own private versin of the Unit's repo.
+-   Name it `unit-X-yourlastname` within the `EAES-420-Spring23` Organization.
+-   Copy the URL of the repo you created using the green `Code` button
+-   Copy/clone it into a `New Project from a GitHub Repo` in RStudio Cloud.
+-   Navigate to the exercise, lab, or homework folder using the `File` pane.
+-   Open the R Markdown instructions `lab-X.Rmd` or `hw-X.Rmd` and, Knit.
+
+## Warm up
+
+Before we introduce the data, let's warm up with some simple exercises.
+
+-   Update the YAML, changing the author name to your name, and **knit** the document. 🧶
+-   Commit your changes with a meaningful commit message. ✅
+-   Push your changes to GitHub.️ ⬆️
+-   Go to your repo on GitHub and confirm that your changes are visible in your Rmd files.
+
+## Packages
+
+```{r message = FALSE}
+library(openintro)
+library(tidyverse)
+library(lubridate)
+library(glue)
+```
+
+## Warm up
+
+Before we introduce the data, let's warm up with some simple exercises.
+
+-   Update the YAML, changing the author name to your name, and **knit** the document.
+-   Commit your changes with a meaningful commit message.
+-   Push your changes to GitHub.
+-   Go to your repo on GitHub and confirm that your changes are visible in your Rmd **and** md files. If anything is missing, commit and push again.
+
+## Data classes exercises (vector, data frames, lists)
+
+## Create some vectors
+
+1.  Insert a code chunk in your starter file under Exercise 1. Use the concatenate function `c()` to create three separate vectors, each containing five elements (i.e. length = 5). The vectors can include anything you want but make sure one is all numeric, one is all character, and one is a mix of character and numeric. Assign each vector to the following vector object names: `numeric`, `character`, `mixed`. Remember to label your code chunk. **Lastly**, using in-line code beneath your code chunk, report the `typeof()` and `class()` of each vector.
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message.*
+
+## Bind the vectors into a data frame
+
+2.  Copy the code chunk below into your starter file under Exercise 2 and complete it. The first line uses the function `bind_cols()` - which is probably new to you - to bind the vectors together as columns in a data frame and assign the data frame to the object `data_frame`. *Note that within `bind_cols()` the vectors are assigned to new variable names using `=`.* Complete the second line that will ensure our renamed data frame is output in the .html file - so that you can inspect it. Don't forget to label the code chunk and change `eval` = T. **Lastly**, using in-line code beneath your code chunk, report the`typeof()` and `class()` of the data frame.
+
+```{r label-me1 , eval = F}
+___ <- bind_cols("numeric" = numeric, "___" = character, "___" = ___)
+___
+```
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message.*
+
+3.  Insert a code chunk in your starter file under Exercise 3. Use the concatenate function to create three separate vectors of the same type as before. This time, two vectors should contain 5 elements, but **one vector should only contain 4 elements.** Again, assign each vector to object names: `numeric`, `character`, `mixed`. In a final lines of code, try to use `bind_cols()` again to bind the three new vectors. Why does this not work? Answer this question question in text narrative beneath your chunk. Finally, because your Rmd file will not knit if you have erroneous code, either comment out the problematic line using `#` or set eval = F in the code chunk header.
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message.*
+
+4.  Copy the code chunk below into Exercise 4 in your starter file, and complete it to create a list from the same three vectors created in Exercise 3. Write in narrative beneath the chunk what this function does and why it works.
+
+```{r label-me2, eval = F}
+___ <- list("___" = numeric, "___" = character, "mixed" = ___)
+my_list
+```
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message.*
+
+## `forcats` exercises (factors)
+
+```{r forcats, fig.margin = TRUE, echo = FALSE, fig.width = 3, fig.cap = "forcats is automatically loaded as part of the tidyverse", eval = TRUE}
+knitr::include_graphics("img/forcats-part-of-tidyverse.png")
+```
+
+5.  Copy the code chunk `earthquake-factors` into your Starter file under Exercise 5. Run the code. Under the code chunk, write a narrative response including three points: 1) What kind of data type coercion is happening to the variable `month` when it is passed to the `ggplot()` function?; 2) What is wrong/weird with the resulting visualization and why?
+
+```{r earthquakes-factors}
+earthquakes %>% 
+  ggplot(aes(x = month)) +
+  geom_bar() +
+  labs(x = "Month of the year", y = "Earthquake count")
+```
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message.*
+
+In exercise 6 we will demo using a few of the *many* `forcats` functions for manipulating factors.
+The R for Data Science chapter on Factors and the `?forcats` help page contains explanations on other functions.
+Use the following code chunks as additional reference if you're working with factors in the future.
+
+6.  Beneath each of the following code chunks, write a sentence stating which `forcats` function is being used and what effect it has on the the variable month and the resulting ggplot visualization, including any problems with the plot. Remember you can use help pages for functions too.
+
+```{r earthquakes-forcats-1}
+earthquakes %>% 
+  ggplot(aes(x = fct_infreq(month))) +
+  geom_bar() +
+  labs(x = "Month of the year", y = "Earthquake count")
+```
+
+```{r earthquakes-forcats-2}
+earthquakes %>% 
+  ggplot(aes(x = fct_rev(month))) +
+  geom_bar() +
+  labs(x = "Month of the year", y = "Earthquake count")
+```
+
+```{r earthquakes-forcats-3}
+earthquakes %>% 
+  ggplot(aes(x = fct_inorder(month))) +
+  geom_bar() +
+  labs(x = "Month of the year", y = "Earthquake count")
+```
+
+```{r earthquakes-forcats-4}
+earthquakes %>% 
+  ggplot(aes(x = month %>% fct_infreq() %>% fct_rev())) +
+  geom_bar() +
+  labs(x = "Month of the year", y = "Earthquake count")
+```
+
+```{r earthquakes-forcats-5}
+earthquakes %>% 
+  mutate(month = fct_recode(month,
+                            "1" = "January",
+                            "2" = "February",
+                            "3" = "March",
+                            "4" = "April",
+                            "5" = "May",
+                            "6" = "June",
+                            "7" = "July",
+                            "8" = "August",
+                            "9" = "September",
+                            "10" = "October",
+                            "11" = "November",
+                            "12" = "December")) %>% 
+  ggplot(aes(x = factor(as.numeric(month)))) +
+  geom_bar() +
+  labs(x = "Month of the year", y = "Earthquake count")
+```
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message.*
+
+## `lubridate` exercises (dates)
+
+```{r lubridate, fig.margin = TRUE, echo = FALSE, fig.width = 3, fig.cap = "lubridate needs to be loaded separately, but is also part of the tidyverse", eval = TRUE}
+knitr::include_graphics("img/lubridate-not-part-of-tidyverse.png")
+```
+
+7.  Copy the code chunk below into Exercise 7 in your starter file, and run it. Write narrative below the chunk explaining what the second and third line of this code chunk does *and* include some inline code to state what the data type and class of the new variable `date` is.
+
+```{r earthquake-dates}
+earthquakes_new <- earthquakes %>% 
+  mutate(date = glue("{year} {month} {day}")) %>% 
+  relocate(date)
+print(earthquakes_new)
+```
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message.*
+
+8.  Create and label a new code chunk under exercise 8. In the code chunk, pipe `earthquakes_new` into a filter function that selects only the year 1933, then pipe the filtered data into ggplot and map the `date` variable to the x-axis and `richter` to the y-axis. Visualize using a scatter plot. Write text narrative beneath your chunk stating what is wrong with this plot, and why.
+
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message.*
+
+9.  Copy and the code chunk below into exercise 9 and complete it. You need to add a function from the `lubridate` package that will convert the `date` variable from class `character` to class `date`. Hint: we covered this in the lecture slides on Thursday 03/09. Remember to change eval = T to have the code execute when you knit your starter document.
+
+```{r earthquakes-dates2, eval = F}
+earthquakes %>% 
+  mutate(date = ___(glue("{year} {month} {day}"))) %>% 
+  relocate(date) %>% 
+  ggplot(aes(x = date, y = richter)) +
+  geom_point() 
+```
+
+Great work!
+You are finished with Homework 4!
+🧶 ✅ ⬆️ Knit, *commit, and push your changes to GitHub with an appropriate commit message.*
