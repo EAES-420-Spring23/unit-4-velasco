@@ -31,7 +31,7 @@ C is type character
 c(1, 1L, "C")
 ```
 
-The second code chunk creates a vector thats more organzied and the second one makes them the characters 
+The second code chunk creates a vector thats more organized and the second one makes them the characters 
 
 ```{r echo = F}
 typeof(c(1, 1L, "C"))
@@ -40,7 +40,19 @@ the third code chunk makes it type`r typeof(c(1,1L,"c"))`
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 2 here.
+```{r echo = F}
+1:3
+5
+```
+1:3 is `r typeof(1:3)`
+5 is `r typeof(5)`
+
+```{r echo = F}
+typeof(c(1:3, 5))
+```
+this is a type`r typeof(c(1:3, 5))`
+
+
 
 ### Exercise 3
 
