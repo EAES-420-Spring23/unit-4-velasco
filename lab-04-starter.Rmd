@@ -1,7 +1,7 @@
 ---
 title: "Lab 04 - Data Type Coercion"
-author: "Insert your name here"
-date: "Insert date here"
+author: "Damian Velasco"
+date: "3/7/2023"
 output: html_document
 ---
 
