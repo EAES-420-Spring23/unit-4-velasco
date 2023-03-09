@@ -81,10 +81,9 @@ As TRUE is take double,
 ```{r echo = F}
 typeof(c(TRUE, as.numeric(TRUE)))
 ```
-this vector is type `r typeof(c(TRUE, as.numeric(TRUE))` doubles overtakes logicals
+this vector is type is a double, and a double overtakes logical
 
 ### Exercise 5
-
 ```{r echo = F}
 NA
 FALSE
@@ -96,7 +95,8 @@ NA is type  `r typeof(NA)`
 ```{r echo = F}
 typeof(c(NA, FALSE, as.logical(1)))
 ```
-every object is logical 
+Every object is logical in this vector
+
 ### Exercise 6
 
 ```{r echo = F}
@@ -105,14 +105,18 @@ every object is logical
 1L / 0
 "A"
 ```
+1L is a type `r typeof(1L)`
+0 is a type `r typeof(0)`
+1L / 0 is a type `r typeof(1L / 0)`
 
 ```{r echo = F}
-#typeof(c(1L / 0, "A"))
+typeof(c(1L / 0, "A"))
 ```
+this cold chunk is a `r typeof( c(1L /0, "A"))` and this is because the character overtakes the doubles
 
 ### Exercise 7
 
-Remove this text, and add your answer for Exercise 7 here.
+
 
 ### Exercise 8
 
