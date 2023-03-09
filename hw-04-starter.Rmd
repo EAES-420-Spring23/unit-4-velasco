@@ -1,7 +1,7 @@
 ---
 title: "Homework 04 - Data Classes w. forcats & lubridate"
-author: "Insert your name here"
-date: "Insert date here"
+author: "Damian Velasco"
+date: "3/9/23"
 output: html_document
 ---
 
@@ -17,12 +17,17 @@ library(lubridate)
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
+```{r}
+c("5", "length = 5", "5L")
+```
+`r typeof("5")`
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 2 here.
-
+```{r bind_data , eval = F}
+data_frame() <- bind_cols("numeric" = numeric, "___" = character, "___" = ___)
+___
+```
 ### Exercise 3
 
 Remove this text, and add your answer for Exercise 3 here.
