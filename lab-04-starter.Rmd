@@ -116,16 +116,25 @@ this cold chunk is a `r typeof( c(1L /0, "A"))` and this is because the characte
 
 ### Exercise 7
 
-
+``` {r}
+glimpse(earthquakes)
+```
 
 ### Exercise 8
 
-Remove this text, and add your answer for Exercise 8 here.
+the two data types would be year and richer
 
 ### Exercise 9
-
-Remove this text, and add your answer for Exercise 9 here.
+This would see them as individuals and because there are many repeaded years, the data would be extended out more than it needs to be.
 
 ### Exercise 10
 
-Remove this text, and add your answer for Exercise 9 here.
+```{r Major, eval = T}
+ggplot(earthquakes, aes()) %>% 
+  mutate(major = case_when(
+    richer > 7.5 ~ TRUE,
+    TRUE ~ ___
+  )) %>% 
+  mutate(___ = as.numeric(___)) %>% 
+  filter(___ == ___)
+```
