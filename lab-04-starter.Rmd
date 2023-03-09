@@ -125,16 +125,16 @@ glimpse(earthquakes)
 the two data types would be year and richer
 
 ### Exercise 9
-This would see them as individuals and because there are many repeaded years, the data would be extended out more than it needs to be.
+This would see them as individuals and because there are many repeated years, the data would be extended out more than it needs to be.
 
 ### Exercise 10
 
-```{r Major, eval = T}
-ggplot(earthquakes, aes()) %>% 
+```{r major, eval = T}
+earthquakes %>% 
   mutate(major = case_when(
-    richer > 7.5 ~ TRUE,
-    TRUE ~ ___
+    richter > 7.5 ~ TRUE,
+    TRUE ~ FALSE
   )) %>% 
-  mutate(___ = as.numeric(___)) %>% 
-  filter(___ == ___)
+  mutate(major = as.numeric(major)) %>% 
+  filter(major == TRUE)
 ```
