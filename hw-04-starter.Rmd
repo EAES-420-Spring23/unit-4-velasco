@@ -114,12 +114,12 @@ earthquakes %>%
   labs(x = "Month of the year", y = "Earthquake count")
 ```
 This one is going in numerical order 
-```{r lubridate, fig.margin = TRUE, echo = FALSE, fig.width = 3, fig.cap = "lubridate needs to be loaded separately, but is also part of the tidyverse", eval = TRUE}
-knitr::include_graphics("img/lubridate-not-part-of-tidyverse.png")
-```
+
 ### Exercise 7
-
-
+In this data, the second and third are being separated by the month and the year.
+`r typeof(year)`
+`r typeof(month)`
+The date would be combining the year month and day together into one vector. 
 ```{r earthquake-dates}
 earthquakes_new <- earthquakes %>% 
   mutate(date = glue("{year} {month} {day}")) %>% 
@@ -130,12 +130,21 @@ print(earthquakes_new)
 
 ### Exercise 8
 
-Remove this text, and add your answer for Exercise 8 here.
+```{r earthquakes-dates}
+ earthquakes_new %>%
+  mutate(date = glue("{year} {month} {day}")) %>% 
+  relocate(date) %>%
+  filter(year == "1933") %>%
+  ggplot( aes(x = date, y = richter))+
+  geom_point()
+```  
+
+In this plot the months are not in the correct order. 
 
 ### Exercise 9
 ```{r earthquakes-dates2, eval = F}
 earthquakes %>% 
-  mutate(date = ___(glue("{year} {month} {day}"))) %>% 
+  mutate(date = ymd(glue("{year} {month} {day}"))) %>% 
   relocate(date) %>% 
   ggplot(aes(x = date, y = richter)) +
   geom_point() 
