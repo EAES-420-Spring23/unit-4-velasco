@@ -39,10 +39,13 @@ typeof(data_frame)
 ```
 ### Exercise 3
 
-```{r}
-
+###```{r}
+numeric <- c(1,2,3,4,5)
+character <- c("A","B","C","D","E")
+mixed <- c("A", 2, "C", 4)
+bind_cols("numeric" = numeric, "character" = character, "mixed" = mixed)
 ```
-
+In this, the error would be that there is a size of 4 and not of 5. And because of this the data chuck will not load. 
 
 ### Exercise 4
 
