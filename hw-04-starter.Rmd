@@ -11,6 +11,7 @@ output: html_document
 library(tidyverse)
 library(openintro) 
 library(lubridate)
+library(glue)
 ```
 
 ## Exercises
@@ -18,44 +19,119 @@ library(lubridate)
 ### Exercise 1
 
 ```{r}
-c("5", "length = 5", "5L")
+c("5")
+c(length = 5)
+c(5L)
+numeric <- c("5")
+character <- c(lengh = 5)
+mixed <- (5L)
 ```
 `r typeof("5")`
 
 ### Exercise 2
 
 ```{r bind_data , eval = F}
-data_frame() <- bind_cols("numeric" = numeric, "___" = character, "___" = ___)
-___
+data_frame() <- bind_cols("numeric" = numeric, "character" = character, "mixed" = mixed)
 ```
 ### Exercise 3
 
-Remove this text, and add your answer for Exercise 3 here.
+```{r}
+
+```
+
 
 ### Exercise 4
 
-Remove this text, and add your answer for Exercise 4 here.
+```{r label-me2, eval = F}
+___ <- list("___" = numeric, "___" = character, "mixed" = ___)
+my_list
+```
 
 ### Exercise 5
 
-Remove this text, and add your answer for Exercise 5 here.
+```{r earthquakes-factors}
+earthquakes %>% 
+  ggplot(aes(x = month)) +
+  geom_bar() +
+  labs(x = "Month of the year", y = "Earthquake count")
+```
 
 ### Exercise 6
 
-Remove this text, and add your answer for Exercise 6 here.
 
+```{r earthquakes-forcats-1}
+earthquakes %>% 
+  ggplot(aes(x = fct_infreq(month))) +
+  geom_bar() +
+  labs(x = "Month of the year", y = "Earthquake count")
+```
+
+```{r earthquakes-forcats-2}
+earthquakes %>% 
+  ggplot(aes(x = fct_rev(month))) +
+  geom_bar() +
+  labs(x = "Month of the year", y = "Earthquake count")
+```
+
+```{r earthquakes-forcats-3}
+earthquakes %>% 
+  ggplot(aes(x = fct_inorder(month))) +
+  geom_bar() +
+  labs(x = "Month of the year", y = "Earthquake count")
+```
+
+```{r earthquakes-forcats-4}
+earthquakes %>% 
+  ggplot(aes(x = month %>% fct_infreq() %>% fct_rev())) +
+  geom_bar() +
+  labs(x = "Month of the year", y = "Earthquake count")
+```
+
+```{r earthquakes-forcats-5}
+earthquakes %>% 
+  mutate(month = fct_recode(month,
+                            "1" = "January",
+                            "2" = "February",
+                            "3" = "March",
+                            "4" = "April",
+                            "5" = "May",
+                            "6" = "June",
+                            "7" = "July",
+                            "8" = "August",
+                            "9" = "September",
+                            "10" = "October",
+                            "11" = "November",
+                            "12" = "December")) %>% 
+  ggplot(aes(x = factor(as.numeric(month)))) +
+  geom_bar() +
+  labs(x = "Month of the year", y = "Earthquake count")
+```
+
+```{r lubridate, fig.margin = TRUE, echo = FALSE, fig.width = 3, fig.cap = "lubridate needs to be loaded separately, but is also part of the tidyverse", eval = TRUE}
+knitr::include_graphics("img/lubridate-not-part-of-tidyverse.png")
+```
 ### Exercise 7
 
-Remove this text, and add your answer for Exercise 7 here.
+
+```{r earthquake-dates}
+earthquakes_new <- earthquakes %>% 
+  mutate(date = glue("{year} {month} {day}")) %>% 
+  relocate(date)
+print(earthquakes_new)
+```
+
 
 ### Exercise 8
 
 Remove this text, and add your answer for Exercise 8 here.
 
 ### Exercise 9
+```{r earthquakes-dates2, eval = F}
+earthquakes %>% 
+  mutate(date = ___(glue("{year} {month} {day}"))) %>% 
+  relocate(date) %>% 
+  ggplot(aes(x = date, y = richter)) +
+  geom_point() 
+```
 
-Remove this text, and add your answer for Exercise 9 here.
 
-### Exercise 10
-
-Remove this text, and add your answer for Exercise 10 here.
