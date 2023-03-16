@@ -18,20 +18,24 @@ library(glue)
 
 ### Exercise 1
 
-```{r}
-c("5")
-c(length = 5)
-c(5L)
-numeric <- c("5")
-character <- c(lengh = 5)
-mixed <- (5L)
-```
-`r typeof("5")`
+```{r eval=TRUE}
 
+numeric <- c(1,2,3,4,5)
+character <- c("A","B","C","D","E")
+mixed <- c("A", 2, "C", 4, "E")
+
+ typeof(c(1,2,3,4,5))
+ typeof(c("A","B","C","D","E"))
+ typeof(c("A", 2, "C", 4, "E"))
+class(character)
+class(numeric)
+class(mixed)
+```
 ### Exercise 2
 
-```{r bind_data , eval = F}
-data_frame() <- bind_cols("numeric" = numeric, "character" = character, "mixed" = mixed)
+```{r bind_data , eval = TRUE}
+data_frame <- bind_cols("numeric" = numeric, "character" = character, "mixed" = mixed)
+typeof(data_frame)
 ```
 ### Exercise 3
 
