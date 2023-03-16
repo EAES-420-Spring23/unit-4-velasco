@@ -39,7 +39,7 @@ typeof(data_frame)
 ```
 ### Exercise 3
 
-###```{r}
+```{r eval= FALSE}
 numeric <- c(1,2,3,4,5)
 character <- c("A","B","C","D","E")
 mixed <- c("A", 2, "C", 4)
@@ -49,11 +49,11 @@ In this, the error would be that there is a size of 4 and not of 5. And because 
 
 ### Exercise 4
 
-```{r label-me2, eval = F}
-___ <- list("___" = numeric, "___" = character, "mixed" = ___)
+```{r , eval = TRUE}
+my_list <- list("numeric" = numeric, "character" = character, "mixed" = mixed)
 my_list
 ```
-
+This data is marked to be as completed and the other data was not complete. 
 ### Exercise 5
 
 ```{r earthquakes-factors}
@@ -62,7 +62,7 @@ earthquakes %>%
   geom_bar() +
   labs(x = "Month of the year", y = "Earthquake count")
 ```
-
+The data type for this coercion is going in a formal matter and not the normal way. This data is weird because it is in alphabetical order and not in the normal order the months go. 
 ### Exercise 6
 
 
