@@ -63,8 +63,8 @@ earthquakes %>%
   labs(x = "Month of the year", y = "Earthquake count")
 ```
 The data type for this coercion is going in a formal matter and not the normal way. This data is weird because it is in alphabetical order and not in the normal order the months go. 
-### Exercise 6
 
+### Exercise 6
 
 ```{r earthquakes-forcats-1}
 earthquakes %>% 
@@ -72,28 +72,28 @@ earthquakes %>%
   geom_bar() +
   labs(x = "Month of the year", y = "Earthquake count")
 ```
-
+This one is going from most to least.
 ```{r earthquakes-forcats-2}
 earthquakes %>% 
   ggplot(aes(x = fct_rev(month))) +
   geom_bar() +
   labs(x = "Month of the year", y = "Earthquake count")
 ```
-
+This data type is going in backward order.
 ```{r earthquakes-forcats-3}
 earthquakes %>% 
   ggplot(aes(x = fct_inorder(month))) +
   geom_bar() +
   labs(x = "Month of the year", y = "Earthquake count")
 ```
-
+This one is about when it comes up in first appearance. 
 ```{r earthquakes-forcats-4}
 earthquakes %>% 
   ggplot(aes(x = month %>% fct_infreq() %>% fct_rev())) +
   geom_bar() +
   labs(x = "Month of the year", y = "Earthquake count")
 ```
-
+this one is going in increasing order.
 ```{r earthquakes-forcats-5}
 earthquakes %>% 
   mutate(month = fct_recode(month,
@@ -113,7 +113,7 @@ earthquakes %>%
   geom_bar() +
   labs(x = "Month of the year", y = "Earthquake count")
 ```
-
+This one is going in numerical order 
 ```{r lubridate, fig.margin = TRUE, echo = FALSE, fig.width = 3, fig.cap = "lubridate needs to be loaded separately, but is also part of the tidyverse", eval = TRUE}
 knitr::include_graphics("img/lubridate-not-part-of-tidyverse.png")
 ```
