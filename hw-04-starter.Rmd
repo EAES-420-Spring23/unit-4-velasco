@@ -31,7 +31,7 @@ class(character)
 class(numeric)
 class(mixed)
 ```
-### Exercise 2
+### Exercise 2 -.5
 
 ```{r bind_data , eval = TRUE}
 data_frame <- bind_cols("numeric" = numeric, "character" = character, "mixed" = mixed)
@@ -64,7 +64,7 @@ earthquakes %>%
 ```
 The data type for this coercion is going in a formal matter and not the normal way. This data is weird because it is in alphabetical order and not in the normal order the months go. 
 
-### Exercise 6
+### Exercise 6 -.5
 
 ```{r earthquakes-forcats-1}
 earthquakes %>% 
@@ -115,7 +115,7 @@ earthquakes %>%
 ```
 This one is going in numerical order 
 
-### Exercise 7
+### Exercise 7 
 In this data, the second and third are being separated by the month and the year.
 `r typeof(year)`
 `r typeof(month)`
